@@ -1,0 +1,66 @@
+.ttu, .bttn .btn, .section-title h3, .header .navbar .navbar-nav .nav-item .nav-link, .header .navbar .navbar-nav .dropdown-menu a, .slider-area1 .tp-caption.slide-text-one h1, .slider-area1 .tp-caption.slide-text-one h2, .slider-area1 .tp-caption.slide-text-one h3, .slider-area1 .tp-caption.slide-text-one h4, .slider-area1 .tp-caption.slide-text-one h5, .slider-area1 .tp-caption.slide-text-one h6, .slider-area1 .tp-caption.slide-text-two h1, .slider-area1 .tp-caption.slide-text-two h2, .slider-area1 .tp-caption.slide-text-two h3, .slider-area1 .tp-caption.slide-text-two h4, .slider-area1 .tp-caption.slide-text-two h5, .slider-area1 .tp-caption.slide-text-two h6, .features-area .features-body .features-box .features-elements h4, .call-to-action1 .cta-box h5.title, .tab-action .cta-box h4, .tab-action .cta-box .nav-tabs .nav-link, .tab-action .cta-box .nav-tabs .nav-item.show .nav-link, .portfolio-area .port-box .port-dtl h5, .port-area2 .portfolio-nav ul li, .pricing-area .price-box .price-quantity .qnty-box .box-element h5, .pricing-area .price-box .price-quantity .qnty-box .box-element p, .schedule-area .tab-content .tab-pane .schdl-box, .schedule-area .dwnload a, .schedule-area2 .schdl-tab-area2.nav .nav-item .nav-link, .schedule-area2 .schedule-tab-content .tab-pane ul li .schedule-desk h5, .product-area .product-box .cart-box .cart-element a, .product-area .product-box .cart-dtl, .blog-area .portfolio-nav ul li, .about-area .about-opening .opening-hours h3, .about-area .about-opening .opening-img .about-nd h5, .about-area .about-opening .opening-img .about-nd p, .trainers-area .trainer-pro .trainer-bio h4, .feature-service .features-box h4, .bmi-box .form-group .bttn .btn, .features-goal .features-box h4, .single-tab-area .single-tab .nav-tabs .nav-item .nav-link, .single-tab-area .single-tab .nav-tabs .nav-item.show .nav-link, .single-tab-area .subscribe-box .subs-title h4, .single-tab-area .subscribe-box .subscribe a, .single-tab-area .single-tab-content .services-content .service-title h4, .counter-area .single-counter p, .contact-area h4, .error-page-area .content-full a, .single-class .single-content .single-title h4, .single-class .search-box input::placeholder, .single-class .single-list h4, .single-class .single-list ul li a, .booking-schedule ul li, .single-information-area .product-info h3 a, .guest-register h5, .guest-register .login a, .footer-area .news-info .footer-title h3, .footer-area .instra h4 {
+  text-transform: uppercase;
+}
+
+.header .navbar.navbar-dark {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0;
+  }
+  .header .navbar .navbar-brand {
+    padding: 0;
+  }
+  .header .navbar .navbar-nav .nav-item {
+    position: relative;
+  }
+  .header .navbar .navbar-nav .nav-item .nav-link, .header .navbar .navbar-nav .tab-action .cta-box .nav-tabs .nav-item.show .nav-link, .tab-action .cta-box .nav-tabs .header .navbar .navbar-nav .nav-item.show .nav-link, .header .navbar .navbar-nav .single-tab-area .single-tab .nav-tabs .nav-item.show .nav-link, .single-tab-area .single-tab .nav-tabs .header .navbar .navbar-nav .nav-item.show .nav-link {
+    line-height: 80px;
+    padding: 0 14px;
+    letter-spacing: 1px;
+    font-size: 15px;
+    color: #fff;
+  }
+  .header .navbar .navbar-nav .nav-item .nav-link:before, .header .navbar .navbar-nav .tab-action .cta-box .nav-tabs .nav-item.show .nav-link:before, .tab-action .cta-box .nav-tabs .header .navbar .navbar-nav .nav-item.show .nav-link:before, .header .navbar .navbar-nav .single-tab-area .single-tab .nav-tabs .nav-item.show .nav-link:before, .single-tab-area .single-tab .nav-tabs .header .navbar .navbar-nav .nav-item.show .nav-link:before {
+    color: transparent;
+    content: "•";
+    font-size: 1.2em;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    text-shadow: transparent 0px 0px;
+    top: -25%;
+    transform: translateX(-50%);
+    transition: text-shadow 0.3s ease 0s, color 0.3s ease 0s;
+  }
+  .header .navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #fc328a;
+  }
+  .header .navbar .navbar-nav .nav-item.active .nav-link {
+    background: #fc328a;
+    color: #fff;
+  }
+  .header .navbar .navbar-nav .nav-item.active .nav-link:before {
+    color: #fff;
+    text-shadow: 10px 0 #fff, -10px 0 #fff;
+  }
+  .header .navbar .navbar-nav .nav-item .icon-menu ul li {
+    display: inline-block;
+    margin: 0 5px;
+    line-height: 80px;
+  }
+  .header .navbar .navbar-nav .nav-item .icon-menu ul li a i {
+    font-size: 16px;
+  }
+  .header .navbar .navbar-nav .dropdown-menu {
+    border-radius: inherit;
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .header .navbar .navbar-nav .dropdown-menu a {
+    color: #fff;
+    padding: 4px 20px;
+    font-size: 14px;
+  }
+  .header .navbar .navbar-nav .dropdown-menu a:hover {
+    color: #fc328a;
+    background: transparent;
+  }
+  

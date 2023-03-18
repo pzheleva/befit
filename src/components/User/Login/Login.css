@@ -1,0 +1,52 @@
+.booking-schedule ul li {
+    color: #6b6b6b;
+    font-size: 15px;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    line-height: 20px;
+  }
+  .booking-schedule ul li i {
+    color: #6b6b6b;
+    float: left;
+    margin-right: 10px;
+  }
+
+  .booking-schedule {
+    margin-top: 40px; }
+
+    .row_first {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+.container {
+    display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.row-main {
+    width: 900px
+}
+
+#gender {
+    max-width: 500px;
+}
+
+#gender .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#gender .form-group p {
+   flex-basis: 100%;
+   text-align: center;
+}
+
+#gender .form-group span {
+    margin-right: 10px;
+}

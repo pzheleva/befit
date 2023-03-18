@@ -1,0 +1,169 @@
+/*02	Navbar Styles*/
+
+.header {
+    .navbar {
+        &.navbar-dark {
+            background: $header-bg;
+            padding: 0;
+        }
+        .navbar-brand {
+            padding: 0;
+        }
+        .navbar-nav {
+            .nav-item {
+                position: relative;
+                .nav-link {
+                    line-height: 80px;
+                    padding: 0 14px;
+                    letter-spacing: 1px;
+                    font-size: 15px;
+                    @extend .ttu;
+                    color: $white;
+                    &:before {
+                        color: transparent;
+                        content: "•";
+                        font-size: 1.2em;
+                        left: 50%;
+                        pointer-events: none;
+                        position: absolute;
+                        text-shadow: transparent 0px 0px;
+                        top: -25%;
+                        transform: translateX(-50%);
+                        transition: text-shadow 0.3s ease 0s, color 0.3s ease 0s;
+                    }
+                    &:hover {
+                        color: $navbar-hover-color;
+                    }
+                }
+                &.active {
+                    .nav-link {
+                        background: $brand-primary;
+                        color: $white;
+                        &:before {
+                            color: $white;
+                            text-shadow: 10px 0 $white, -10px 0 $white;
+                        }
+                    }
+                }
+                .icon-menu {
+                    ul {
+                        li {
+                            display: inline-block;
+                            margin: 0 5px;
+                            line-height: 80px;
+                            a {
+                                i {
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .dropdown-menu {
+                border-radius: inherit;
+                background: $dropdown-bg;
+                a {
+                    @extend .ttu;
+                    color: $white;
+                    padding: 4px 20px;
+                    font-size: 14px;
+                    &:hover {
+                        color: $dropdown-hover-color;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*icon-menu*/
+
+.search-popup {
+    position: fixed;
+    left: 0px;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    overflow: auto;
+    transition: all 700ms ease;
+    -moz-transition: all 700ms ease;
+    -webkit-transition: all 700ms ease;
+    -ms-transition: all 700ms ease;
+    -o-transition: all 700ms ease;
+    &.popup-visible {
+        top: 0;
+        visibility: visible;
+        opacity: 1;
+    }
+    .close-search {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        font-size: 25px;
+        color: #ffffff;
+        padding: 10px;
+        background: $brand-primary;
+        cursor: pointer;
+        z-index: 5;
+        -webkit-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+        &:hover {
+            opacity: 0.70;
+        }
+    }
+    .search-form {
+        position: relative;
+        padding: 0px 15px 50px;
+        padding-top: 200px;
+        max-width: 700px;
+        margin: 0 auto;
+        fieldset {
+            position: relative;
+            border-radius: 12px;
+            input[type="search"],
+            input.form-control {
+                position: relative;
+                height: 70px;
+                padding: 20px 220px 20px 30px;
+                background: #ffffff;
+                line-height: 30px;
+                font-size: 24px;
+                color: #233145 !important;
+            }
+            input[type="submit"] {
+                position: absolute;
+                display: block;
+                right: 0px;
+                top: 0px;
+                text-align: center;
+                width: 220px;
+                padding: 20px 10px 20px 10px;
+                color: #ffffff;
+                cursor: pointer;
+                background: $brand-primary;
+                line-height: 30px;
+                height: 70px;
+                -webkit-transition: all 0.4s ease 0s;
+                transition: all 0.4s ease 0s;
+                font-size: 20px;
+                text-transform: uppercase;
+                border-radius: 0px 7px 7px 0px;
+                border: none;
+                &:hover {
+                    background: $brand-primary;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+/*icon-menu*/
+
+/*02	Navbar Styles*/

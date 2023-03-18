@@ -1,0 +1,17 @@
+.row {
+    margin-top: 50px;
+}
+
+
+
+#post_theme a{
+    color:black;
+    border: 1px solid #fc328a;
+    background-color: #fc328a;
+    font-size: 18px;
+    padding: 10px 15px;
+}
+
+.noClasses {
+    color: black
+}

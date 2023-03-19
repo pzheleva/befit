@@ -14,7 +14,7 @@ import Details from './components/Details/Details';
 import Edit from './components/Edit/Edit';
 import Booking from './components/Booking/Booking';
 import Profile from './components/User/Profile/Profile';
-
+import Schedule from './components/Schedule/Schedule';
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
   <Route path="/blog/details/:topicId/edit" element={<Edit />} />
   <Route path="/book" element={<Booking />} />
   <Route path="/profile" element={<Profile />} />
+  <Route path="/schedule" element={<Schedule />} />
   </Routes>
   </>
   );

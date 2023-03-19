@@ -7,9 +7,8 @@ import { auth } from "../../../firebase";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const [firstName, setFirstName] = useState("");
@@ -50,7 +49,7 @@ export default function Register() {
         email: data.email,
         age: data.age,
         bookings: [],
-        posts: []
+        posts: [],
       });
       reset();
       navigate("/login");
@@ -61,33 +60,33 @@ export default function Register() {
   };
 
   const errorHandler = (errorCode) => {
-    let errorMsg = ''
+    let errorMsg = "";
     switch (errorCode) {
       case "auth/invalid-email":
-          errorMsg = "Bad Request.";
+        errorMsg = "Bad Request.";
         break;
       case "auth/email-already-exists":
-          errorMsg = "Email exists!";
+        errorMsg = "Email exists!";
         break;
       case "auth/wrong-password":
-          errorMsg = "Wrong password!";
+        errorMsg = "Wrong password!";
         break;
       case "auth/user-not-found":
-          errorMsg = "Email not found. Please register!";
-          break;
+        errorMsg = "Email not found. Please register!";
+        break;
       case "auth/email-already-in-use":
-          errorMsg = "Email exists!";
-          break;
+        errorMsg = "Email exists!";
+        break;
       default:
-          errorMsg = "Something went wrong!";
+        errorMsg = "Something went wrong!";
     }
 
-    if(errorCode){
+    if (errorCode) {
       toast.error(errorMsg, {
-        position: toast.POSITION.TOP_RIGHT
-    })
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
-  }
+  };
 
   return (
     <>
@@ -98,11 +97,10 @@ export default function Register() {
       {/*contact-area start*/}
       <div className="contact-area ctc-form1 pad90">
         <div className="container">
-        <ToastContainer />
+          <ToastContainer />
           <div className="row-main">
-            <div className="col-md-8">
-              <div className="contact-form">
-                <div className="appointment-schedule">
+          
+
                   <form
                     id="contact-form"
                     data-toggle="validator"
@@ -235,7 +233,9 @@ export default function Register() {
                       )}
                       {watch("rePassword") !== watch("password") &&
                       getValues("rePassword") ? (
-                        <p className="help-block with-errors">password not match</p>
+                        <p className="help-block with-errors">
+                          password not match
+                        </p>
                       ) : null}
                       <div className="col-md-4">
                         <div className="form-group">
@@ -314,23 +314,26 @@ export default function Register() {
                         </p>
                       )}
                     </div>
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="bttn full-width mt10">
+                    
+             
+                        <div className="custom_button">
                           <button
                             type="submit"
-                            className="btn full-width active btn-primary"
+                            className="myButton2"
                             disabled={!isDirty || !isValid}
                           >
                             Register
                           </button>
                         </div>
-                      </div>
+                      
                       {/* /.col */}
-                    </div>
+                    
                     <div className="acc">
-          <p>You already have an account? <Link to="/login">Log In</Link></p>
-        </div>
+                      <p>
+                        You already have an account?{" "}
+                        <Link to="/login">Log In</Link>
+                      </p>
+                    </div>
                     {/* /.row */}
                     <div className="row">
                       <div className="col-md-12">
@@ -340,12 +343,11 @@ export default function Register() {
                     </div>
                     {/* /.row */}
                   </form>
-                </div>
+                
               </div>
-            </div>
             {/* /.col */}
             {/* /.col*/}
-          </div>
+          
           {/* /.row */}
         </div>
         {/* /.container */}

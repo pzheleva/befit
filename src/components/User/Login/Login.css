@@ -50,3 +50,39 @@ align-items: center;
 #gender .form-group span {
     margin-right: 10px;
 }
+
+.custom_class {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px
+}
+
+.custom_form{
+    width: 700px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row_first {
+    width: 700px
+}
+
+.col-md-4 {
+    width: 700px;
+}
+
+.myButton{
+    background-color: #e83e8c;
+    border: none;
+    padding: 6px 30px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.row {
+    margin-top: 20px
+}

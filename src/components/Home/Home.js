@@ -1,7 +1,29 @@
 import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
+import { useEffect, useState} from "react";
+import { useLocation } from "react-router-dom";
+
+
+
 
 const Home = () => {
+
+  const location = useLocation();
+  const [count, setCount] = useState(0);
+  
+  // useEffect(() => {
+  //     // execute on location change
+  //     setCount(count + 1);
+  //     console.log('Location changed!', location.pathname);
+  //     const asd = document.querySelector(".preloader");
+  //     if(asd){
+  //     asd.style.display = "none";
+  //     }
+  // }, [location]);
+
+
+
+
     return (
         <>
         <div >

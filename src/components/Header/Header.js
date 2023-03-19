@@ -39,24 +39,13 @@ export default function Header() {
               </div>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                pages<span className="sr-only">(current)</span>
-              </a>
-              <div className="dropdown-menu animation  slideUpIn">
-                <a className="dropdown-item" href="pricing-plan.html">pricing-plan</a>
-                <a className="dropdown-item" href="contact.html">contact</a>
-                <a className="dropdown-item" href="contact-2.html">contact 2</a>
-                <a className="dropdown-item" href="error.html">404</a>
-              </div>
-            </li>
-            <li className="nav-item dropdown">
               <Link className="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" to="/book">
                 Booking<span className="sr-only">(current)</span>
               </Link>
 
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="schedule.html">schedule</a>
+              <Link className="nav-link" to="/schedule">schedule</Link>
             </li>
             <li className="nav-item dropdown">
               <Link className="nav-link " to="/blog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

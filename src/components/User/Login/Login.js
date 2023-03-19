@@ -2,78 +2,79 @@ import "./Login.css";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useHistory, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../../../firebase";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { getFirstName } from "../../../services/userService";
 
-
 export default function Login() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    watch,
+    reset,
+    formState: { errors, isDirty, isValid },
+  } = useForm({ mode: "onChange" });
 
-    const {
-        register,
-        handleSubmit,
-        getValues,
-        watch,
-        reset,
-        formState: { errors, isDirty, isValid },
-      } = useForm({ mode: "onChange" });
+  const signin = async (data, e) => {
+    try {
+      e.preventDefault();
+      const res = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      const user = res.user;
+      localStorage.setItem("user", JSON.stringify(user));
 
+      navigate("/");
+    } catch (err) {
+      console.log(err.code);
+      errorHandler(err.code);
+    }
+  };
 
-      const signin = async (data, e) => {
+  const errorHandler = (errorCode) => {
+    let errorMsg = "";
+    switch (errorCode) {
+      case "auth/invalid-email":
+        errorMsg = "Bad Request.";
+        break;
+      case "auth/email-already-exists":
+        errorMsg = "Email exists!";
+        break;
+      case "auth/wrong-password":
+        errorMsg = "Wrong password!";
+        break;
+      case "auth/user-not-found":
+        errorMsg = "Email not found. Please register!";
+        break;
+      case "auth/email-already-in-use":
+        errorMsg = "Email exists!";
+        break;
+      default:
+        errorMsg = "Something went wrong!";
+    }
 
-        try {
-            e.preventDefault();
-            const res = await signInWithEmailAndPassword(auth, data.email, data.password)
-            const user = res.user;
-            localStorage.setItem("user", JSON.stringify(user))
-            
+    if (errorCode) {
+      toast.error(errorMsg, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
 
-
-            navigate("/");
-        }catch(err) {
-            console.log(err.code);
-            errorHandler(err.code);
-        }
-      };
-
-      const errorHandler = (errorCode) => {
-        let errorMsg = ''
-        switch (errorCode) {
-          case "auth/invalid-email":
-              errorMsg = "Bad Request.";
-            break;
-          case "auth/email-already-exists":
-              errorMsg = "Email exists!";
-            break;
-          case "auth/wrong-password":
-              errorMsg = "Wrong password!";
-            break;
-          case "auth/user-not-found":
-              errorMsg = "Email not found. Please register!";
-              break;
-          case "auth/email-already-in-use":
-              errorMsg = "Email exists!";
-              break;
-          default:
-              errorMsg = "Something went wrong!";
-        }
-    
-        if(errorCode){
-          toast.error(errorMsg, {
-            position: toast.POSITION.TOP_RIGHT
-        })
-        }
-      }
-
-    return (
-        <>
+  return (
+    <>
       {/* page title & breadcrumbs start */}
 
       {/* /.page-header */}
@@ -81,11 +82,10 @@ export default function Login() {
       {/*contact-area start*/}
       <div className="contact-area ctc-form1 pad90">
         <div className="container">
-       < ToastContainer />
+          <ToastContainer />
           <div className="row-main">
-            <div className="col-md-8">
-              <div className="contact-form">
-                <div className="appointment-schedule">
+            <div className="custom_class">
+              <div className="custom_form">
                   <form
                     id="contact-form"
                     data-toggle="validator"
@@ -95,8 +95,7 @@ export default function Login() {
                     onSubmit={handleSubmit(signin)}
                   >
                     <div className="row_first">
-                      
-                    <div className="col-md-4">
+                      <div className="col-md-4">
                         <div className="form-group">
                           <input
                             id="email"
@@ -129,7 +128,7 @@ export default function Login() {
                             data-error="Enter your text"
                             {...register("password", {
                               required: true,
-                              maxLength: 25
+                              maxLength: 25,
                             })}
                           />
                           <div className="help-block with-errors" />
@@ -144,26 +143,26 @@ export default function Login() {
                         <p className="help-block with-errors">
                           Max length is 25 characters!
                         </p>
-                      )} 
-                    
+                      )}
                     </div>
                     <div className="row">
-                      <div className="col-md-12">
-                        <div className="bttn full-width mt10">
                           <button
                             type="submit"
-                            className="btn full-width active btn-primary"
+                            className="myButton"
                             disabled={!isDirty || !isValid}
                           >
                             Login
                           </button>
-                        </div>
-                      </div>
                       {/* /.col */}
                     </div>
                     <div className="acc">
-          {<p>You don't have an account? <Link to="/register">Register</Link></p>}
-        </div>
+                      {
+                        <p>
+                          You don't have an account?{" "}
+                          <Link to="/register">Register</Link>
+                        </p>
+                      }
+                    </div>
                     {/* /.row */}
                     <div className="row">
                       <div className="col-md-12">
@@ -174,7 +173,6 @@ export default function Login() {
                     {/* /.row */}
                   </form>
                 </div>
-              </div>
             </div>
             {/* /.col */}
             {/* /.col*/}
@@ -185,5 +183,5 @@ export default function Login() {
       </div>
       {/*contact-area end*/}
     </>
-    )
+  );
 }

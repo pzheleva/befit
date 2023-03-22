@@ -17,6 +17,7 @@ import Booking from './components/Booking/Booking';
 import Profile from './components/User/Profile/Profile';
 import Schedule from './components/Schedule/Schedule';
 import AuthContext from './components/contexts/AuthContext';
+import Error from './components/Error/Error';
 import { signOut } from "firebase/auth";
 import { auth } from './firebase';
 import { useNavigate } from 'react-router-dom';
@@ -60,6 +61,7 @@ function App() {
   <Route path="/book" element={<Booking />} />
   <Route path="/profile" element={<Profile />} />
   <Route path="/schedule" element={<Schedule />} />
+  <Route path="*" element={<Error />} />
   </Routes>
   </AuthContext.Provider>
   </>

@@ -1,13 +1,19 @@
 import "./Profile.css"
 import { getId, getUser, getBookings, getPosts } from "../../../services/userService";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
+import { isAuth } from "../../Guard/AuthGuards";
 
-export default function Profile() {
+
+
+const Profile = () => {
 
 const id = getId();
-const [userInfo, setUser] = useState([]);
+const [userInformation, setUser] = useState([]);
 const [userBookings, setUserBookings] = useState([]);
 const [userPosts, setUserPosts] = useState([]);
+
+const {userInfo} = useContext(AuthContext);
 
 
 useEffect(() => {
@@ -71,8 +77,8 @@ getUserPosts();
         {" "}
         <img src="https://i.imgur.com/wvxPV9S.png" height={100} width={100} />
       </button>{" "}
-      <span className="name mt-3">{userInfo.firstName} {userInfo.lastName}</span>
-      <span className="idd">{userInfo.email}</span>{" "}
+      <span className="name mt-3">{userInformation.firstName} {userInformation.lastName}</span>
+      <span className="idd">{userInformation.email}</span>{" "}
       <div className="d-flex flex-row justify-content-center align-items-center gap-2">
         {" "}
 
@@ -111,3 +117,5 @@ getUserPosts();
 
     )
 }
+
+export default isAuth(Profile);

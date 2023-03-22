@@ -4,7 +4,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getId } from "../../services/userService";
 import { getFirestore, doc, updateDoc, arrayUnion, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase";
-export default function Booking() {
+import AuthContext from "../contexts/AuthContext";
+import { isAuth } from "../Guard/AuthGuards";
+
+
+
+const Booking = () => {
 
     const id = getId();
 
@@ -224,3 +229,5 @@ export default function Booking() {
 
     )
 }
+
+export default isAuth(Booking);

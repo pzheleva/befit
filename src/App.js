@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home';
 import Register from './components/User/Register/Register'
@@ -15,11 +16,39 @@ import Edit from './components/Edit/Edit';
 import Booking from './components/Booking/Booking';
 import Profile from './components/User/Profile/Profile';
 import Schedule from './components/Schedule/Schedule';
+import AuthContext from './components/contexts/AuthContext';
+import { signOut } from "firebase/auth";
+import { auth } from './firebase';
+import { useNavigate } from 'react-router-dom';
+
 
 function App() {
+
+  const [userInfo, setUserInfo] = useState({isAuth: false, user: ""});
+  const localStorageUser = JSON.parse(localStorage.getItem('user'))
+  if (localStorageUser !== null && userInfo.user == '') {
+		setUserInfo({isAuth:true, user: {...localStorageUser}})
+	}
+
+  let navigate = useNavigate();
+
+  async function handleLogout(e) {
+    e.preventDefault();
+
+    signOut(auth).then(() => {
+      localStorage.removeItem("user");
+      navigate("/home");
+    }).catch((error) => {
+        console.log(error.message)
+    })
+
+}
+
+
   return (
     <>
-  <Header/>
+    <AuthContext.Provider value={{userInfo }}>
+  <Header {...userInfo} handleLogout={handleLogout} />
   <Routes>
   <Route path="/home" element={<Home />} />
   <Route path="/register" element={<Register />} />
@@ -32,6 +61,7 @@ function App() {
   <Route path="/profile" element={<Profile />} />
   <Route path="/schedule" element={<Schedule />} />
   </Routes>
+  </AuthContext.Provider>
   </>
   );
 }

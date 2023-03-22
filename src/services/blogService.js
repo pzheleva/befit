@@ -24,4 +24,13 @@ export async function getTopicById(id) {
 export async function getCommentsSection (id) {
     const snap = await getDoc(doc(db, 'topics', id));
     return snap.data().comments;
+};
+
+
+export function isAuthor(authorId, userId) {
+    if(authorId === userId) {
+        return true;
+    }else {
+        return false;
+    }
 }

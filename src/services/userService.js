@@ -2,13 +2,22 @@ import { Form } from "react-router-dom";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { db } from "../firebase";
 
+
 export  function getId() {
 	let user = JSON.parse(localStorage.getItem("user"));
 
     return user.uid;
 }
 
+export  function isThereUser() {
+	let user = JSON.parse(localStorage.getItem("user"));
 
+    if(user){
+        return true;
+    }else{
+        return false;
+    }
+}
 
 
 export async function getFirstName(id) {
@@ -38,3 +47,12 @@ export async function getUser(id) {
 
     return docSnap.data();
 }
+
+export function isAuthor(authorId, userId) {
+    if(authorId === userId) {
+        return true;
+    }else {
+        return false;
+    }
+}
+

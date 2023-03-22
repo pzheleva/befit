@@ -37,7 +37,7 @@ export default function Login() {
       const user = res.user;
       localStorage.setItem("user", JSON.stringify(user));
 
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.log(err.code);
       errorHandler(err.code);

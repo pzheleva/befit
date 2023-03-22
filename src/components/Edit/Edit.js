@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Router, useParams, useNavigate } from "react-router-dom";
 import { getTopicById } from "../../services/blogService";
 import { useForm } from "react-hook-form";
@@ -8,12 +8,15 @@ import { getDoc, updateDoc, getFirestore, doc, setDoc } from "firebase/firestore
 import 'react-toastify/dist/ReactToastify.css';
 import { getId, getFirstName } from "../../services/userService";
 import { ToastContainer, toast } from 'react-toastify';
-
-export default function Edit() {
+import AuthContext from "../contexts/AuthContext";
+import { isAuth } from "../Guard/AuthGuards";
+const Edit = () => {
     const routeParams = useParams();
     const id = routeParams.topicId;
     const userId = getId();
     const navigate = useNavigate();
+    const {userInfo} = useContext(AuthContext);
+
 
     const {
         register,
@@ -280,3 +283,6 @@ export default function Edit() {
       </>
     )
 }
+
+export default isAuth(Edit);
+

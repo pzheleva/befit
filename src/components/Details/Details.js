@@ -1,6 +1,6 @@
 import "./Details.css"
 import { getTopicById, getCommentsSection } from "../../services/blogService";
-import { getId, getFirstName } from "../../services/userService";
+import { getId, getFirstName} from "../../services/userService";
 import { Router, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -10,6 +10,7 @@ import SingleComment from "../SingleComment/SingleComment";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { isAuthor } from "../../services/blogService";
 
 let initialState = [];
 
@@ -29,9 +30,13 @@ const Details = () => {
   const id = routeParams.topicId;
   const userId = getId();
 
+
+
   const [topic, setTopic] = useState([]);
   const [userName, setUserName] = useState([]);
   const [commentsTopic, setCommentsTopic] = useState([]);
+
+  const isauthor = isAuthor(topic.uidOwner, userId);
 
 
         useEffect(() => {
@@ -139,8 +144,12 @@ const Details = () => {
                 {topic.textplace}
               </p>
             </div>
+            { isauthor ?
+              <>
             <button className="btn active btn-primary"><Link to={`/blog/details/${id}/edit`}>Edit</Link></button>
           <button className="btn active btn-primary" onClick={deletePost}>Delete</button>
+          </>
+            : ""}
             <hr></hr>
           </div>
           

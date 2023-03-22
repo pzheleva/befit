@@ -2,13 +2,20 @@ import { Link } from "react-router-dom";
 import "./Header.css"
 import Blog from "../Blog/Blog";
 import { useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import AuthContext from "../contexts/AuthContext";
 
-export default function Header() {
+
+export default function Header({handleLogout}) {
   const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("user");
     navigate(`/home`);
   }
+
+  let {userInfo, exposeUserInfo} = useContext(AuthContext);
+  const isAuth = userInfo.isAuth
+
 
   return (
     <header className="header fixed-top">
@@ -38,34 +45,41 @@ export default function Header() {
                 <a className="dropdown-item" href="trainers.html">trainers</a>
               </div>
             </li>
-            <li className="nav-item dropdown">
-              <Link className="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" to="/book">
-                Booking<span className="sr-only">(current)</span>
-              </Link>
-
-            </li>
             <li className="nav-item">
               <Link className="nav-link" to="/schedule">schedule</Link>
             </li>
-            <li className="nav-item dropdown">
-              <Link className="nav-link " to="/blog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                blog<span className="sr-only">(current)</span>
-              </Link>
+            <li className="nav-item">
+              <Link className="nav-link" to="/blog">blog</Link>
+            </li>
+           
+          {isAuth ? (
+            <>
+            <li className="nav-item">
+              <Link className="nav-link" to="/schedule">booking</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/profile">profile</Link>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Sign up / Sign In<span className="sr-only">(current)</span>
-              </a>
-              <div className="dropdown-menu animation  slideUpIn">
-                <Link className="dropdown-item" to="/login">Sign In</Link>
-                <Link className="dropdown-item" to="/register">Sign Up</Link>
-              </div>
-            </li>
-            <li className="nav-item dropdown">
-              <Link className="nav-link " onClick={logout} to="/home">
+              <Link className="nav-link " onClick={handleLogout}>
                 Log out
               </Link>
-            </li>
+            </li> 
+            </> ) :  (
+              <>
+               <li className="nav-item dropdown">
+               <a className="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Sign up / Sign In<span className="sr-only">(current)</span>
+               </a>
+               <div className="dropdown-menu animation  slideUpIn">
+                 <Link className="dropdown-item" to="/login">Sign In</Link>
+                 <Link className="dropdown-item" to="/register">Sign Up</Link>
+               </div>
+             </li>
+             </>
+            )
+              }
+            
           </ul>
         </div>
       </div>

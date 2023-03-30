@@ -1,0 +1,58 @@
+.footer-container{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#button-addon1 {
+  color: #ffc371;
+}
+
+i {
+  color: #0000cc;
+  font-size: 20px;}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-control.shadow-0:focus {
+  box-shadow: none;
+}
+
+ 
+.display-3{
+  font-family: 'Sanchez', serif;
+}
+
+p{
+  font-family: 'Tajawal', sans-serif;
+}
+
+.lead{
+  font-family: 'Sanchez 200', serif;
+}
+
+
+.py-3{
+  width: 1500px
+}
+
+.address{
+  max-width: 300px;
+}
+
+i{
+  color: #e83e8c;;
+}
+
+.text-muted p {
+  color: white;
+}
+
+.social ul{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 20px;
+}

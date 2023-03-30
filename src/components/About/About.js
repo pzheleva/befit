@@ -22,20 +22,12 @@ export default function About() {
           <div className="aboutus-box">
             <div className="about-desc">
               <p>
-                Lorem ipsum dolor sit amet, et nulla mnesarchum disputationi
-                quo, eum suscipit facilisi ea. Sea magna persius saperet ne,
-                nonumy nemore et duo, te quis graece scaevola nec. Cu denique
-                phaedrum pertinacia sed. Iisque latine labitur his ex, porro
-                vivendum no qui. uem epicuri qualisque et sea.
+              A healthy lifestyle is important for everyone. When we look after our physical health, we feel better too – fitter, more relaxed and better able to cope with things. This is especially important when you have a mental illness.
               </p>{" "}
               <br />
               <p>
-                Sit repudiandae contentiones eu, an atqui interesset usu, usu ad
-                appareat tacimates platonem. In eum eleifend intellegam, mucius
-                labores assueverit vel ne. An nam viris option. Cum no eruditi
-                albucius, quo eros lucilius dissentiet et. Duo facer reprimique
-                in repudiandae contentiones eu, an atqui interesset usu, usu ad
-                appareat tacimates platonem.{" "}
+              ‘Healthy living’ means maintaining a healthy lifestyle and introducing habits that improve your health. It can be difficult to change old habits, but there are steps you can take to become healthier. An important first step is identifying less healthy habits and learning new, positive ones to replace them.
+              We are here to help you!{" "}
               </p>
             </div>
             <div className="about-benefit mt50">
@@ -43,12 +35,10 @@ export default function About() {
                 <span>
                   <i className="fa fa fa-stop-circle" />
                 </span>
-                professional trainer :
+                professional trainers :
               </a>
               <p>
-                Duis bonorum theophrastus ad sea. In tation ea affert sadipscing
-                soluta usu, et eos legimus expetenda consectetuer, nec ad tation
-                doctus.
+                Our team is here to help you through your journey and answer all your questions.
               </p>
             </div>
             <div className="about-benefit mt30">
@@ -56,12 +46,10 @@ export default function About() {
                 <span>
                   <i className="fa fa fa-stop-circle" />
                 </span>
-                multiple classromm :
+                multiple classrooms :
               </a>
               <p>
-                Duis bonorum theophrastus ad sea. In tation ea affert sadipscing
-                soluta usu, et eos legimus expetenda consectetuer, nec ad tation
-                doctus.
+                With more then 20 classrooms there is enough space to practice almost every physical activity you want.
               </p>
             </div>
             <div className="about-benefit mt30">
@@ -72,9 +60,7 @@ export default function About() {
                 equipment :
               </a>
               <p>
-                Duis bonorum theophrastus ad sea. In tation ea affert sadipscing
-                soluta usu, et eos legimus expetenda consectetuer, nec ad tation
-                doctus.
+              Stay fit with our range of gym equipment such as weights, dumbbells, treadmills, yoga balls, medicine balls & more.
               </p>
             </div>
           </div>
@@ -85,22 +71,19 @@ export default function About() {
               <h3>opening hours</h3>
               <ul>
                 <li>
-                  monday to fiday <span>07.00 - 17.00</span>
+                  monday to fiday <span>07.00 - 20.00</span>
                 </li>
                 <li>
-                  saturday <span>07.00 - 14.00</span>
+                  saturday <span>07.00 - 18.00</span>
                 </li>
                 <li>
-                  sunday<span>weekend</span>
+                  sunday<span>07.00 - 18.00</span>
                 </li>
               </ul>
             </div>
             <div className="opening-img">
-              <img src="assets/images/about/1.jpg" alt="About Img" />
-              <div className="about-nd">
-                <h5>mr.olympia</h5>
-                <p>24-8-2017</p>
-              </div>
+              <img src="http://img1.wsimg.com/isteam/ip/4549b023-2b89-44a1-bfde-d3b05b6ca0c7/0335e425c45b5ef236bd98974173b841.jpg" alt="About Img" />
+            
             </div>
           </div>
         </div>

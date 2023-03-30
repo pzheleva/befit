@@ -21,6 +21,7 @@ import Error from "./components/Error/Error";
 import { signOut, getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import About from "./components/About/About";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [userInfo, setUserInfo] = useState({ isAuth: false, user: "" });
@@ -54,6 +55,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Error />} />
         </Routes>
+        <Footer/>
       </AuthContext.Provider>
     </>
   );

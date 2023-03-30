@@ -6,7 +6,8 @@ import { getFirestore, doc, updateDoc, arrayUnion, deleteDoc } from "firebase/fi
 import { db } from "../../firebase";
 import AuthContext from "../contexts/AuthContext";
 import { isAuth } from "../Guard/AuthGuards";
-import "./Booking.css"
+import "./Booking.css";
+import Footer from "../Footer/Footer";
 
 
 const Booking = () => {
@@ -193,6 +194,7 @@ const Booking = () => {
     {/* /.row */}
   </div>
   {/* /.container */}
+  <Footer/>
 </div>
 
     )

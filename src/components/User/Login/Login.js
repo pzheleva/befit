@@ -17,6 +17,13 @@ import { getFirstName } from "../../../services/userService";
 export default function Login() {
   const navigate = useNavigate();
 
+  function onLoad ($) {
+    const asd = document.querySelector(".preloader");
+    $("asd").fadeOut('slow', function () {
+      asd.remove();
+    });
+}
+
   const {
     register,
     handleSubmit,
@@ -36,8 +43,8 @@ export default function Login() {
       );
       const user = res.user;
       localStorage.setItem("user", JSON.stringify(user));
-
       navigate("/home");
+    
     } catch (err) {
       console.log(err.code);
       errorHandler(err.code);

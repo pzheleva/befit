@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import { useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
-
+import Footer from '../Footer/Footer';
 
 
 
@@ -17,7 +17,10 @@ const Home = () => {
   //     console.log('Location changed!', location.pathname);
   //     const asd = document.querySelector(".preloader");
   //     if(asd){
-  //     asd.style.display = "none";
+  //       setTimeout(() => {
+  //         asd.remove();
+  //       }, 500)
+      
   //     }
   // }, [location]);
 
@@ -334,130 +337,7 @@ const Home = () => {
       </div>
     </div>
     {/*client*/}
-    <footer>
-      <section className="footer-area bg2 parallax overlay pt90">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3 col-sm-12 ">
-              <div className="footer-logo footer-content">
-                <img src="/assets/images/logo/logo2.png" alt="footer logo" />
-              </div>
-              <p>Lorem ipsum dolor sit amet, ei ubique fastidii vim. Elitr feugait complectitur eu pro, sea audire ponderum eleifend cu. Vim at fuisset.</p>
-              <div className="add-info">
-                <p><a href="#"><i className="fa fa-map-marker" aria-hidden="true" /></a>23 New Design Street, Melbourne</p>
-                <p><a href="#"><i className="fa fa-envelope-o" aria-hidden="true" /></a>befitgym@gmail.com</p>
-                <p className="mb-0"><a href="#"><i className="fa fa-mobile" aria-hidden="true" /></a>+880-123-456-7890</p>
-              </div>
-            </div>
-            {/* /.col */}
-            <div className="col-md-3 col-sm-12">
-              <div className="news-info ftr-algn">
-                <div className="footer-title footer-content">
-                  <h3>news letter</h3>
-                </div>
-                <p> sign up for our mailing list to get latest updates and offers</p>
-                <div className="subscribe">
-                  <form action="#">
-                    <input className="name" type="text" placeholder="Enter your email" />
-                  </form>
-                  <a href="#"><i className="fa fa-long-arrow-right" aria-hidden="true" /></a>
-                </div>
-                <div className="footer-social">
-                  <ul>
-                    <li><a href="#"><i className="fa fa-facebook" /></a></li>
-                    <li><a href><i className="fa fa-twitter" /></a></li>
-                    <li><a href><i className="fa fa-youtube" /></a></li>
-                    <li><a href><i className="fa fa-pinterest" /></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            {/* /.col */}
-            <div className="col-md-3 col-sm-12">
-              <div className="news-info ftr-algn">
-                <div className="footer-title footer-content">
-                  <h3>latest post</h3>
-                </div>
-                <div className="news-detail nws-bar">
-                  <img src="/assets/images/footer/1.jpg" alt="" />
-                  <p>Set yourself the challenge of doing the bare minimum.</p>
-                </div>
-                <div className="news-detail">
-                  <img src="/assets/images/footer/2.jpg" alt="" />
-                  <p>Body fat percentage: what does it really mean?</p>
-                </div>
-                <div className="news-detail">
-                  <img src="/assets/images/footer/3.jpg" alt="" />
-                  <p>This treatment sounded just what I was looking for.</p>
-                </div>
-              </div>
-            </div>
-            {/* /.col */}
-            <div className="col-md-3 col-sm-12">
-              <div className="news-info open-hrs ftr-algn">
-                <div className="footer-title footer-content">
-                  <h3>opening hours</h3>
-                </div>
-                <ul>
-                  <li>Monday <span>07:00 - 17:00</span></li>
-                  <li>tuesday <span>07:00 - 17:00</span></li>
-                  <li>wednesday <span>07:00 - 17:00</span></li>
-                  <li>thursday <span>07:00 - 17:00</span></li>
-                  <li>friday <span>07:00 - 17:00</span></li>
-                  <li>saturday <span>07:00 - 17:00</span></li>
-                </ul>
-              </div>
-            </div>
-            {/* /.col */}
-          </div>
-          {/* /.row */}
-          <div className="row">
-            <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div className="instra pad60">
-                <h4><span>instragram</span></h4>
-              </div>
-            </div>
-            {/* /.col */}
-          </div>
-          {/* /.row */}
-        </div>
-        {/*/.container*/}
-      </section>
-      {/*footer-gallery start*/}
-      <div className="footer-gallery owl-carousel">
-        <div className="item active"> <a href="/assets/images/instagram/big1.jpg">
-            <img src="/assets/images/instagram/1.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item "><a href="/assets/images/instagram/big2.jpg">
-            <img src="/assets/images/instagram/2.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big3.jpg">
-            <img src="/assets/images/instagram/3.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big4.jpg">
-            <img src="/assets/images/instagram/4.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big5.jpg">
-            <img src="/assets/images/instagram/5.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big6.jpg">
-            <img src="/assets/images/instagram/6.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big4.jpg">
-            <img src="/assets/images/instagram/4.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big5.jpg">
-            <img src="/assets/images/instagram/5.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-        <div className="item"> <a href="/assets/images/instagram/big6.jpg">
-            <img src="/assets/images/instagram/6.jpg" alt="Instragram img" /><i className="fa fa-search" /></a>
-        </div>
-      </div>
-      {/*footer-gallery end*/}
-      <div className="copyright pad30">
-        <h4>Copyright © <span>iThemeslab</span> All Rights Reserved</h4>
-      </div>
-    </footer>
+    <Footer/>
   </div>
   {/*Search Popup*/}
   <div id="search-popup" className="search-popup">

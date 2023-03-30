@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./SingleTopicCard.css";
 
 export default function SingleTopicCard({data, key}) {
 
@@ -7,7 +8,7 @@ export default function SingleTopicCard({data, key}) {
 
 
     return (
-    <div className="col-lg-6 col-md-12">
+    <div className="col-lg-9 col-md-12">
           <div className="blog-box blog-page mt40">
             <div className="blog-img">
               <img src={data.imageUrl} alt="Blog img" />
@@ -25,7 +26,7 @@ export default function SingleTopicCard({data, key}) {
               <div className="meta">
                 <div className="news-author">
                   <i className="fa fa-user" />
-                  <a href="#">{data.firstName}</a>
+                  <a href="#">{data.firstNameOwner}</a>
                 </div>
                 <div className="coment-counter news-author">
                   <i className="fa fa-comments" />

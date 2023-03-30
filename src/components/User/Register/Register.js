@@ -95,7 +95,7 @@ export default function Register() {
       {/* /.page-header */}
       {/* page title & breadcrumbs end */}
       {/*contact-area start*/}
-      <div className="contact-area ctc-form1 pad90">
+      <div className="contact-area pad90">
         <div className="container">
           <ToastContainer />
           <div className="row-main">

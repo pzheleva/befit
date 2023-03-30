@@ -1,7 +1,8 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import { db } from "../firebase";
-
+import { signOut,getAuth } from 'firebase/auth';
+import { auth } from "../firebase";
 
 export  function getId() {
 	let user = JSON.parse(localStorage.getItem("user"));
@@ -46,13 +47,5 @@ export async function getUser(id) {
     const docSnap = await getDoc(docRef);
 
     return docSnap.data();
-}
-
-export function isAuthor(authorId, userId) {
-    if(authorId === userId) {
-        return true;
-    }else {
-        return false;
-    }
 }
 

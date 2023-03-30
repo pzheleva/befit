@@ -2,25 +2,37 @@ import { Link } from "react-router-dom";
 import "./Header.css"
 import Blog from "../Blog/Blog";
 import { useNavigate } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AuthContext from "../contexts/AuthContext";
+import { signOut, getAuth } from "firebase/auth";
+
+export default function Header() {
 
 
-export default function Header({handleLogout}) {
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("user");
-    navigate(`/home`);
-  }
-
-  let {userInfo, exposeUserInfo} = useContext(AuthContext);
+  const {userInfo, setUserInfo, refreshLogin} = useContext(AuthContext);
   const isAuth = userInfo.isAuth
+  const navigate = useNavigate();
+  const auth = getAuth();
+  // console.log(isAuth)
+  const [isLogged, setIsLogged] = useState(isAuth);
 
+  async function handleLogout(e) {
+    e.preventDefault();
 
+    signOut(auth).then(() => {
+      localStorage.clear();
+      navigate("/login");
+      refreshLogin();
+     
+    }).catch((error) => {
+        console.log(error.message)
+    })
+
+}
   return (
     <header className="header fixed-top">
     <nav className="navbar navbar-expand-lg navbar-dark">
-      <div className="container">
+      <div className="container-header">
         <div className="navbar-header">
           <a className="navbar-brand" href="index.html"><img src="/assets/images/logo/logo.png" alt="logo img" /></a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,16 +46,8 @@ export default function Header({handleLogout}) {
                 home
               </Link>
             </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link " href="about-us.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                about<span className="sr-only">(current)</span>
-              </a>
-              <div className="dropdown-menu animation  slideUpIn">
-                <a className="dropdown-item" href="about-us.html">about us</a>
-                <a className="dropdown-item" href="services.html">services</a>
-                <a className="dropdown-item" href="service-single.html">service single</a>
-                <a className="dropdown-item" href="trainers.html">trainers</a>
-              </div>
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">about</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/schedule">schedule</Link>
@@ -55,13 +59,13 @@ export default function Header({handleLogout}) {
           {isAuth ? (
             <>
             <li className="nav-item">
-              <Link className="nav-link" to="/schedule">booking</Link>
+              <Link className="nav-link" to="/book">booking</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/profile">profile</Link>
             </li>
             <li className="nav-item dropdown">
-              <Link className="nav-link " onClick={handleLogout}>
+              <Link className="nav-link " onClick={handleLogout} to="/home">
                 Log out
               </Link>
             </li> 

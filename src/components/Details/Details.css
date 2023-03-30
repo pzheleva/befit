@@ -1,5 +1,9 @@
 .username {
+    position: relative;
+    right: 310px;
     color: black;
+    text-align: left;
+    margin-bottom: 10px;
 }
 
 body{
@@ -9,7 +13,7 @@ body{
 
 .card{
 	
-	background-color: #fff;
+	background-color: #beb0b0;
 	border: none;
 }
 
@@ -72,3 +76,56 @@ small {
     gap: 20px
 }
  */
+
+ .pt50 {
+    margin-top: 30px;
+ }
+
+ .col-md-10{
+    max-width: 800px;
+ }
+
+ .mt20 {
+    width:auto;
+    height: auto;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.btn-edit{
+    background-color: #e83e8c;
+    border: none;
+    padding: 10px 40px;
+    color: white;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-delete{
+    background-color: #e83e8c;
+    border: none;
+    padding: 10px 40px;
+    color: white;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+card-comments {
+
+}
+
+.p-3 h6{
+    color: black
+}
+
+#comment_section{
+    margin-bottom: 10px;
+}

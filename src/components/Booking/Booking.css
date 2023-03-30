@@ -1,0 +1,35 @@
+.booking_class {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    justify-content: center;
+
+}
+
+.booking-class {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+}
+
+.tst {
+    color: rgb(158, 151, 151)
+}
+
+
+.btn-test {
+    background-color: #e83e8c;
+    border: none;
+    padding: 10px 40px;
+    color: white;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}
+
+.booking-btn {
+    position: relative;
+    left: 120px;
+    margin-top: 20px;
+}

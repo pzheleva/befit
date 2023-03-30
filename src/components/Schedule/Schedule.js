@@ -1,3 +1,5 @@
+import "./Schedule.css";
+
 export default function Schedule() {
 
     return(
@@ -142,7 +144,7 @@ export default function Schedule() {
               </div>
               <div className="schdl-box">
                 <h5>-----</h5>
-                <p className="mb-0">1.00 am – 12.00am</p>
+                <p className="mb-0">01.00 am – 12.00am</p>
               </div>
               <div className="schdl-box">
                 <h5>fitness</h5>
@@ -184,7 +186,7 @@ export default function Schedule() {
               </div>
               <div className="schdl-box">
                 <h5>-----</h5>
-                <p className="mb-0">1.00 am – 12.00am</p>
+                <p className="mb-0">01.00 am – 12.00am</p>
               </div>
               <div className="schdl-box">
                 <h5>fitness</h5>
@@ -206,7 +208,7 @@ export default function Schedule() {
               </div>
               <div className="schdl-box">
                 <h5>-----</h5>
-                <p className="mb-0">1.00 am – 12.00am</p>
+                <p className="mb-0">01.00 am – 12.00am</p>
               </div>
               <div className="schdl-box">
                 <h5>fitness</h5>
@@ -224,7 +226,7 @@ export default function Schedule() {
               </div>
               <div className="schdl-box">
                 <h5>-----</h5>
-                <p className="mb-0">1.00 am – 12.00am</p>
+                <p className="mb-0">01.00 am – 12.00am</p>
               </div>
               <div className="schdl-box">
                 <h5>fitness</h5>
@@ -264,7 +266,7 @@ export default function Schedule() {
               </div>
               <div className="schdl-box">
                 <h5>-----</h5>
-                <p className="mb-0">1.00 am – 12.00am</p>
+                <p className="mb-0">01.00 am – 12.00am</p>
               </div>
               <div className="schdl-box">
                 <h5>fitness</h5>
@@ -286,7 +288,7 @@ export default function Schedule() {
               </div>
               <div className="schdl-box">
                 <h5>-----</h5>
-                <p className="mb-0">1.00 am – 12.00am</p>
+                <p className="mb-0">01.00 am – 12.00am</p>
               </div>
             </div>
           </div>
@@ -294,19 +296,7 @@ export default function Schedule() {
         {/* /.col */}
       </div>
       {/* /.row */}
-      <div className="row">
-        <div className="col-md-12">
-          <div className="dwnload">
-            <a href="#">
-              <span>
-                <i className="fa fa-download" aria-hidden="true" />
-              </span>
-              download our full class schedule
-            </a>
-          </div>
-        </div>
-        {/* /.col */}
-      </div>
+      
       {/* /.row */}
     </div>
     {/* /.container */}

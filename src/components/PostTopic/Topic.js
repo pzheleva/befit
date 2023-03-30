@@ -130,13 +130,13 @@ export default function Topic() {
         {/* /.page-header */}
         {/* page title & breadcrumbs end */}
         {/*contact-area start*/}
-        <div className="contact-area ctc-form1 pad90">
+        <div className="contact-area pad90">
           <div className="container">
          < ToastContainer />
             <div className="row-main">
-              <div className="col-md-8">
+              <div >
                 <div className="contact-form">
-                  <div className="appointment-schedule">
+                  
                     <form
                       id="contact-form"
                       data-toggle="validator"
@@ -147,7 +147,7 @@ export default function Topic() {
                     >
                       <div className="row_first">
                       <div className="title">Post Topic</div>
-                      <div className="col-md-4">
+                      <div className="normal_class">
                           <div className="form-group">
                             <input
                               id="title"
@@ -169,7 +169,7 @@ export default function Topic() {
                         {errors.title && errors.title.type === "maxLength" && (
                           <p className="help-block with-errors">Max length is 60 characters!</p>
                         )}
-                        <div className="col-md-4">
+                        <div className="normal_class">
                           <div className="form-group mt10">
                             <input
                               id="imageUrl"
@@ -189,10 +189,11 @@ export default function Topic() {
                             Image is required!.
                           </p>
                         )}
-                            <div className="col-md-4">
-                          <div className="form-group mt10">
-                          <span className="details">Category</span>
-                            <select name="category" {...register("category")}>
+                            <div className="normal_class category_class">
+                          
+                         
+                            <select name="category" {...register("category")} className="options_class">
+                                <option value="" disabled selected>Category</option>
                                 <option value="health">Health</option>
                                 <option value="fitness">Fitness</option>
                                 <option value="bodybuilding">Bodybuilding</option>
@@ -200,10 +201,10 @@ export default function Topic() {
                                 <option value="weightlifting">Weightlifting</option>
                                 <option value="beauty">Beauty</option>
                             </select>
-                          </div>
+                         
                         </div>
 
-                        <div className="col-md-4">
+                        <div className="normal_class">
                           <div className="form-group mt10">
                             <textarea
                               id="textplace"
@@ -242,30 +243,25 @@ export default function Topic() {
                      
                       </div>
                       <div className="row">
-                        <div className="col-md-12">
-                          <div className="bttn full-width mt10">
+         
+                        
                             <button
                               type="submit"
-                              className="btn full-width active btn-primary"
+                              className="btn-post"
                               disabled={!isDirty || !isValid}
                             >
                               Submit
                             </button>
-                          </div>
-                        </div>
+                          
+                       
                         {/* /.col */}
                       </div>
                    
                       {/* /.row */}
-                      <div className="row">
-                        <div className="col-md-12">
-                          <div id="msgalert" className="hidden" />
-                        </div>
-                        {/* /.col */}
-                      </div>
+                     
                       {/* /.row */}
                     </form>
-                  </div>
+                  
                 </div>
               </div>
               {/* /.col */}

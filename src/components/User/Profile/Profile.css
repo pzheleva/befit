@@ -89,3 +89,13 @@ hr .new1 {
 .date {
     background-color: #ccc
 }
+
+.mt-3 p{
+    margin-bottom: 5px;
+    color:rgb(226, 207, 220);
+    font-weight: bold;
+}
+
+.mt-3 ul{
+    margin-bottom: 20px;
+}

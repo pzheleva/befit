@@ -4,3 +4,33 @@
     margin-bottom: 30px;
     margin-top: 25px;
 }
+
+
+
+.category_class {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.options_class {
+    padding: 15px 15px;
+    border-radius: 23px;
+    background-color: white;
+    border: 1px solid rgb(219, 214, 214);
+    margin-bottom: 15px;
+    color: rgb(150, 144, 144)
+}
+
+.normal_class {
+    width:500px;
+}
+
+.btn-post {
+    background-color: #e83e8c;
+    border: none;
+    padding: 10px 40px;
+    color: white;
+    margin-bottom: 30px;
+    border-radius: 20px;
+}

@@ -6,7 +6,7 @@ import { getFirestore, doc, updateDoc, arrayUnion, deleteDoc } from "firebase/fi
 import { db } from "../../firebase";
 import AuthContext from "../contexts/AuthContext";
 import { isAuth } from "../Guard/AuthGuards";
-
+import "./Booking.css"
 
 
 const Booking = () => {
@@ -40,37 +40,36 @@ const Booking = () => {
     }
     
     return(
-        <div className="contact-area ctc-form1 pad90">
+        <div className="contact-area pad90">
   <div className="container">
   <ToastContainer />
-    <div className="row">
-      <div className="col-md-8">
-        <div className="contact-form ">
-          <div className="appointment-schedule">
+   
+     
             <form
-              id="contact-form"
+             
               data-toggle="validator"
               role="form"
               action="POST"
-              className="appointment-form"
+              className="booking_class"
               onSubmit={handleSubmit(book)}
             >
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <input type="date" className="form-control" id="date" {...register("date", {
+              
+                <div className="booking-class">
+               
+                    <input type="date" className="form-control tst" id="date" {...register("date", {
                                 required: true,
                               })}/>
-                  </div>
+                 
                 </div>
                 {errors.date && errors.date.type === "required" && (
                           <p className="help-block with-errors">
                             Date is required!
                           </p>
                         )}
-                <div className="col-md-4">
-                  <div className="form-group">
-                    <select name="time" className="form-control" {...register("time")}>
+                <div className="booking-class">
+                  
+                    <select name="time" className="form-control tst" {...register("time")}>
+                    <option value="" disabled selected>Choose a time</option>
                       <option value="09.00am">09.00am</option>
                       <option value="10.00am">10.00am</option>
                       <option value="11.00am">11.00am</option>
@@ -79,10 +78,11 @@ const Booking = () => {
                       <option value="03.00pm">03.00pm</option>
                       <option value="04.00pm">04.00pm</option>
                     </select>
-                  </div>
+                  
                 </div>
-                <div className="col-md-4">
-                  <select name="class" className="form-control" {...register("class")}>
+                <div className="booking-class">
+                  <select name="class" className="form-control tst" {...register("class")}>
+                  <option value="" disabled selected>Choose a class</option>
                     <option value="Bodybuilding">Bodybuilding</option>
                     <option value="Services">Services</option>
                     <option value="Crossfit">Crossfit</option>
@@ -90,10 +90,10 @@ const Booking = () => {
                     <option value="Belly dance">Belly dance</option>
                   </select>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="form-group mt10">
+              
+              
+                <div className="booking-class">
+                 
                     <input
                       id="inputName"
                       type="text"
@@ -105,7 +105,7 @@ const Booking = () => {
                         maxLength: 20
                       })}
                     />
-                  </div>
+                  
                 </div>
                 {errors.inputName && errors.inputName.type === "required" && (
                           <p className="help-block with-errors">
@@ -117,8 +117,8 @@ const Booking = () => {
                             Maximum characters are 20!
                           </p>
                         )}
-                <div className="col-md-4">
-                  <div className="form-group">
+                <div className="booking-class">
+                 
                     <input
                       id="phone"
                       type="text"
@@ -131,7 +131,7 @@ const Booking = () => {
                           /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
                       })}
                     />
-                  </div>
+                 
                 </div>
                 {errors.phone?.type === "required" && (
                         <p className="help-block with-errors">
@@ -143,11 +143,11 @@ const Booking = () => {
                           Invalid phone number!
                         </p>
                       )}
-              </div>
-              <div className="row">
+              
+              
     
-                <div className="col-md-12">
-                  <div className="form-group">
+                <div className="booking-class">
+                  
                     <textarea
                       className="form-control"
                       name="inputMessage"
@@ -159,69 +159,37 @@ const Booking = () => {
                         maxLength: 100
                       })}
                     />
-                  </div>
+                 
                 </div>
                       {errors.inputMessage?.type === "maxLength" && (
                         <p className="help-block with-errors">
                           Maximum characters are 100!
                         </p>
                       )}
-              </div>
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="bttn full-width mt10">
+              
+              
+                <div className="booking-btn">
+                
                     <button
                       type="submit"
-                      className="btn full-width active btn-primary"
+                      className="btn-test"
                       disabled={!isValid}
                     >
-                      book now
+                      BOOK NOW
                     </button>
-                  </div>
+                  
                 </div>
                 {/* /.col */}
-              </div>
+              
               {/* /.row */}
-              <div className="row">
-                <div className="col-md-12">
-                  <div id="msgalert" className="hidden" />
-                </div>
-                {/* /.col */}
-              </div>
+             
               {/* /.row */}
             </form>
-          </div>
-        </div>
-      </div>
+         
       {/* /.col */}
-      <div className="col-md-4">
-        <div className="booking-schedule">
-          <ul>
-            <li>
-              <i className="fa fa-calendar" />
-              monday to wednesday
-            </li>
-            <li>
-              <i className="fa fa-clock-o" />
-              07.00am----10.00pm
-            </li>
-            <li>
-              <i className="fa fa-calendar" />
-              monday to wednesday
-            </li>
-            <li>
-              <i className="fa fa-clock-o" />
-              07.00am----10.00pm
-            </li>
-            <li>
-              <i className="fa fa-clock-o" />
-              07.00am----10.00pm
-            </li>
-          </ul>
-        </div>
-      </div>
+    
       {/* /.col*/}
-    </div>
+    
     {/* /.row */}
   </div>
   {/* /.container */}

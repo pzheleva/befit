@@ -64,3 +64,9 @@
     background: transparent;
   }
   
+  .container-header {
+    display: flex;
+    flex: auto;
+    align-items: center;
+  
+  }

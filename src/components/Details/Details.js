@@ -1,19 +1,27 @@
-import "./Details.css"
+import "./Details.css";
 import { getTopicById, getCommentsSection } from "../../services/blogService";
-import { getId, getFirstName} from "../../services/userService";
+import { getId, getFirstName } from "../../services/userService";
 import { Router, useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { getFirestore, doc, updateDoc, arrayUnion, deleteDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  updateDoc,
+  arrayUnion,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../../firebase";
 import SingleComment from "../SingleComment/SingleComment";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { isAuthor } from "../../services/blogService";
+import AuthContext from "../contexts/AuthContext";
+import { isAuth } from "../Guard/AuthGuards";
+import "./Details.css";
 
 let initialState = [];
-
 
 const Details = () => {
   const {
@@ -30,181 +38,171 @@ const Details = () => {
   const id = routeParams.topicId;
   const userId = getId();
 
-
-
   const [topic, setTopic] = useState([]);
   const [userName, setUserName] = useState([]);
   const [commentsTopic, setCommentsTopic] = useState([]);
 
   const isauthor = isAuthor(topic.uidOwner, userId);
 
+  useEffect(() => {
+    async function getTheme() {
+      const result = await getTopicById(id);
+      initialState = [result];
+      setTopic(result);
+    }
 
-        useEffect(() => {
-            async function getTheme() {
-                const result = await getTopicById(id);
-                initialState = [result];
-                setTopic(result);
-             
-            }
+    getTheme();
 
-            getTheme();
+    async function getUserName() {
+      const result = await getFirstName(userId);
+      setUserName(result);
+    }
+    getUserName();
 
-            async function getUserName(){
-           
-              const result = await getFirstName(userId);
-              setUserName(result);
-            
-            }
-            getUserName();
+    async function getComments() {
+      const result = await getCommentsSection(id);
+      console.log(result);
+      setCommentsTopic(result);
+    }
+    getComments();
+  }, []);
 
+  console.log(commentsTopic);
 
-            async function getComments() {
-              const result = await getCommentsSection(id);
-              console.log(result)
-              setCommentsTopic(result)
-            }
-            getComments();
-        }, [])
+  const post = async (data, e) => {
+    try {
+      const dateObj = new Date();
+      const month = dateObj.getUTCMonth() + 1; //months from 1-12
+      const day = dateObj.getUTCDate();
+      const year = dateObj.getUTCFullYear();
 
-        console.log(commentsTopic)
+      const newdate = year + "/" + month + "/" + day;
 
-        const post = async (data, e) => {
-            try {
-              const dateObj = new Date();
-              const month = dateObj.getUTCMonth() + 1; //months from 1-12
-              const day = dateObj.getUTCDate();
-              const year = dateObj.getUTCFullYear();
-              
-              const newdate = year + "/" + month + "/" + day;
+      const data_new = {
+        user: userName,
+        text: data.text,
+        date: newdate,
+      };
 
-              const data_new = {
-                "user": userName,
-                "text": data.text,
-                "date": newdate
-              }
+      const docRef = doc(db, "topics", id);
+      await updateDoc(docRef, {
+        comments: arrayUnion(data_new),
+      });
 
-              const docRef = doc(db, "topics", id);
-              await updateDoc(docRef, {
-                comments: arrayUnion(data_new)
-              })
+      reset();
+      setCommentsTopic([
+        ...commentsTopic,
+        {
+          ...data_new,
+        },
+      ]);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const deletePost = () => {
+    confirmAlert({
+      title: "Confirm to submit",
+      message: "Are you sure to do this.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            const docRef = doc(db, "topics", id);
+            deleteDoc(docRef);
+            navigate(`/blog`);
+          },
+        },
+        {
+          label: "No",
+          // onClick: () => alert("Click No")
+        },
+      ],
+    });
+  };
+
+  return (
+    <>
+      {/* /.page-header */}
+      {/* page title & breadcrumbs end */}
+      {/*single-class start*/}
+      <div className="single-class pad90">
+        <div className="container">
           
+            <div className="col-md-10">
+              <div className="single-content">
+                
+                <div className="single-title">
+                  <img src={topic.imageUrl}></img>
+                  <h4 className="mt50">{topic.title}</h4>
+                  <p className="category">Category: {topic.category}</p>
+                  <div className="mt20">{topic.textplace}</div>
+                </div>
+                {isauthor ? (
+                  <>
+                    <button className="btn-edit">
+                      <Link to={`/blog/details/${id}/edit`} className="btn-edit-sec">Edit</Link>
+                    </button>
+                    <button
+                      className="btn-delete"
+                      onClick={deletePost}
+                    >
+                      Delete
+                    </button>
+                  </>
+                ) : (
+                  ""
+                )}
+                <hr></hr>
+              </div>
 
-              reset();
-              setCommentsTopic([...commentsTopic, {
-                ...data_new
-              }]) 
-            }catch(err){
-              console.log(err.message)
-            }
-        }
-
-        const deletePost = () => {
-
-          
-
-          confirmAlert({
-            title: "Confirm to submit",
-            message: "Are you sure to do this.",
-            buttons: [
-              {
-                label: "Yes",
-                onClick: () => {
-                  const docRef = doc(db, "topics", id);
-                  deleteDoc(docRef);
-                  navigate(`/blog`);
-                }
-              },
-              {
-                label: "No"
-                // onClick: () => alert("Click No")
-              }
-            ]
-          });
-        };
-
-    return (
-        <>
-
-  {/* /.page-header */}
-  {/* page title & breadcrumbs end */}
-  {/*single-class start*/}
-  <div className="single-class pad90">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-8">
-          <div className="single-content">
-            <div className="single-img">
-              <img src="assets/images/blog/1.jpg" alt=" Blog img" />
-            </div>
-            <div className="single-title">
-            <img src={topic.imageUrl}></img>
-              <h4 className="mt50">{topic.title}</h4>
-              <p className="category">Category: {topic.category}</p>
-              <p className="mt20">
-                {topic.textplace}
-              </p>
-            </div>
-            { isauthor ?
-              <>
-            <button className="btn active btn-primary"><Link to={`/blog/details/${id}/edit`}>Edit</Link></button>
-          <button className="btn active btn-primary" onClick={deletePost}>Delete</button>
-          </>
-            : ""}
-            <hr></hr>
-          </div>
-          
-          <div> 
-          <div className="container mt-5 mb-5">
-  <div className="row height d-flex justify-content-center align-items-center">
-    <div className="col-md-7">
-      <div className="card">
-        <div className="p-3">
-          <h6>Comments</h6>
-        </div>
-        <div className="test">
-        <form
-                    id="contact-form"
-                    data-toggle="validator"
-                    role="form"
-                    action="POST"
-                    className="appointment-form"
-                    onSubmit={handleSubmit(post)}
-                  >
-          <span className="username">{userName}</span>
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Enter your comment..."
-            {...register("text")
-          }
-          />
-           <button
-                            type="submit"
-                            className="btn active btn-primary"
+              <div>
+                  
+                      <div className="card-comments">
+                        <div className="p-3">
+                          <h6>Comments</h6>
+                        </div>
+                        <div className="test">
+                          <form
+                            id="contact-form"
+                            data-toggle="validator"
+                            role="form"
+                            action="POST"
+                            className="appointment-form"
+                            onSubmit={handleSubmit(post)}
                           >
-                            POST
-                          </button>
+                            <span className="username">Username: {userName}</span>
+                            <input
+                              type="text"
+                              id="comment_section"
+                              className="form-control"
+                              placeholder="Enter your comment..."
+                              {...register("text")}
+                            />
+                            <button
+                              type="submit"
+                              className="btn-post"
+                            >
+                              POST
+                            </button>
                           </form>
-        </div>
-          
-        
-        
-        {commentsTopic.length > 0 ? (
-                <>
-				{ commentsTopic.map(c => <SingleComment key = {c.id} data = {c}/>) }
-			 </> )
-			 : 
-			 <h4 className="noClasses">No comments.</h4>}
-      
-   
-      </div>
-    </div>
-  </div>
-</div>
+                        </div>
 
-          </div>
-          {/*accordion*/}
-          {/* <div id="accordion" className="mt50" role="tablist">
+                        {commentsTopic.length > 0 ? (
+                          <>
+                            {commentsTopic.map((c) => (
+                              <SingleComment key={c.id} data={c} />
+                            ))}
+                          </>
+                        ) : (
+                          <h4 className="noClasses">No comments.</h4>
+                        )}
+                      </div>
+                   
+              </div>
+              {/*accordion*/}
+              {/* <div id="accordion" className="mt50" role="tablist">
             <div className="card">
               <div className="card-header" role="tab" id="headingOne">
                 <h5 className="mb-0">
@@ -370,17 +368,17 @@ const Details = () => {
               </div>
             </div>
           </div> */}
-          {/*accordion*/}
-        </div>
-        {/* /.col */}
-        {/* <div className="col-md-4"> */}
-          {/* <div className="search-box mb50">
+              {/*accordion*/}
+           
+            {/* /.col */}
+            {/* <div className="col-md-4"> */}
+            {/* <div className="search-box mb50">
             <input type="text" placeholder="search" />
             <a href="#">
               <i className="fa fa-search" />
             </a>
           </div> */}
-          {/* <div className="single-list mt50">
+            {/* <div className="single-list mt50">
             <h4 className="mb20">categories</h4>
             <ul>
               <li>
@@ -400,16 +398,15 @@ const Details = () => {
               </li>
             </ul>
           </div> */}
-        {/* </div> */}
-        {/* /.col */}
+            {/* </div> */}
+            {/* /.col */}
+          </div>
+          {/* /.row */}
+        </div>
+        {/* /.container */}
       </div>
-      {/* /.row */}
-    </div>
-    {/* /.container */}
-  </div>
-</>
+    </>
+  );
+};
 
-    )
-}
-
-export default Details;
+export default isAuth(Details);

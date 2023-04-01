@@ -54,15 +54,20 @@ export default function Topic() {
                 comments: []
               });
 
-              
+              toast.success("Topic posted!", {
+                position: toast.POSITION.TOP_RIGHT
+            })
                 const docRef = doc(db, "users", id);
     
                 await updateDoc(docRef, {
                     posts: arrayUnion(data)
                   });
 
-
-              navigate("/blog");
+                  
+              setTimeout(() => {
+                navigate("/blog");
+              }, 2000)
+            
               reset()
         }catch(err) {
             console.log(err.code);

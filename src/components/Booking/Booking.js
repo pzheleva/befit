@@ -31,6 +31,9 @@ const Booking = () => {
             await updateDoc(docRef, {
                 bookings: arrayUnion(data)
               })
+              toast.success("Booking successful!", {
+                position: toast.POSITION.TOP_RIGHT
+            })
           reset();
         }catch(err){
             toast.error(err.message, {

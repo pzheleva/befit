@@ -1,5 +1,5 @@
 import "./Login.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useHistory, useNavigate } from "react-router-dom";
 import {
@@ -13,16 +13,19 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getFirstName } from "../../../services/userService";
+import AuthContext from "../../contexts/AuthContext";
+
 
 export default function Login() {
   const navigate = useNavigate();
+  const {userInfo, setUserInfo, refreshLogin} = useContext(AuthContext);
 
-  function onLoad ($) {
-    const asd = document.querySelector(".preloader");
-    $("asd").fadeOut('slow', function () {
-      asd.remove();
-    });
-}
+
+  function onLoad () {
+    const loadEv = document.createEvent("HTMLEvents");
+    loadEv.initEvent("load", true, true);
+    window.dispatchEvent(loadEv);
+  }
 
   const {
     register,
@@ -45,6 +48,10 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(user));
       navigate("/home");
     
+      refreshLogin(true);
+      // setTimeout(() => {
+      //   onLoad();
+      // }, 500)
     } catch (err) {
       console.log(err.code);
       errorHandler(err.code);

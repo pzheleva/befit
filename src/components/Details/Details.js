@@ -20,6 +20,8 @@ import { isAuthor } from "../../services/blogService";
 import AuthContext from "../contexts/AuthContext";
 import { isAuth } from "../Guard/AuthGuards";
 import "./Details.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let initialState = [];
 
@@ -88,7 +90,9 @@ const Details = () => {
       await updateDoc(docRef, {
         comments: arrayUnion(data_new),
       });
-
+      toast.success("Comment added!", {
+        position: toast.POSITION.TOP_RIGHT
+    })
       reset();
       setCommentsTopic([
         ...commentsTopic,
@@ -109,9 +113,16 @@ const Details = () => {
         {
           label: "Yes",
           onClick: () => {
+            
             const docRef = doc(db, "topics", id);
             deleteDoc(docRef);
-            navigate(`/blog`);
+            toast.success("Topic deleted!!", {
+              position: toast.POSITION.TOP_RIGHT
+          })
+            setTimeout(() => {
+              navigate(`/blog`);
+            }, 2000)
+            
           },
         },
         {
@@ -129,7 +140,7 @@ const Details = () => {
       {/*single-class start*/}
       <div className="single-class pad90">
         <div className="container">
-          
+        < ToastContainer />
             <div className="col-md-10">
               <div className="single-content">
                 

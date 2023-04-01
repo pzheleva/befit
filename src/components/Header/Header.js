@@ -13,7 +13,7 @@ export default function Header() {
   const isAuth = userInfo.isAuth
   const navigate = useNavigate();
   const auth = getAuth();
-  // console.log(isAuth)
+  console.log(isAuth)
   const [isLogged, setIsLogged] = useState(isAuth);
 
   async function handleLogout(e) {
@@ -22,7 +22,7 @@ export default function Header() {
     signOut(auth).then(() => {
       localStorage.clear();
       navigate("/login");
-      refreshLogin();
+      refreshLogin(false);
      
     }).catch((error) => {
         console.log(error.message)

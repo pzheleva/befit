@@ -32,8 +32,8 @@ function App() {
   }
 
 
- const refreshLogin = () => {
-  setUserInfo({ isAuth: false, user: "" });
+ const refreshLogin = (isAuth) => {
+  setUserInfo({ isAuth, user: "" });
  }
  
 
@@ -44,7 +44,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login {...userInfo} />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/post-topic" element={<Topic />} />
           <Route path="/blog/details/:topicId" element={<Details />} />

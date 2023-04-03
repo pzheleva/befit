@@ -27,7 +27,7 @@ function App() {
   const [userInfo, setUserInfo] = useState({ isAuth: false, user: "" });
   const localStorageUser = JSON.parse(localStorage.getItem("user"));
   if (localStorageUser !== null && userInfo.user == "") {
-    console.log("test");
+
     setUserInfo({ isAuth: true, user: { ...localStorageUser } });
   }
 

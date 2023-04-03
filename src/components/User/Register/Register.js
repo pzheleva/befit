@@ -31,7 +31,7 @@ export default function Register() {
   } = useForm({ mode: "onChange" });
 
   const singup = async (data, e) => {
-    console.log(data);
+
     try {
       e.preventDefault();
       const res = await createUserWithEmailAndPassword(

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Error() {
   return (
     <>
@@ -13,7 +15,7 @@ export default function Error() {
                 <h1>404</h1>
                 <h2>PAGE NOT FOUND</h2>
                 <p>sorry we couldn't find a page your're looking for</p>
-                <a href="index.html">home page</a>
+                <Link to="/home">home page</Link>
               </div>
             </div>
           </div>

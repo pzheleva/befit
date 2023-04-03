@@ -390,8 +390,14 @@
                 autoHeight: "off",
             });
             // revolution slider end
-    
-    
+            $(".spinner4").hide();
+
+                // $( "#rev_slider_1" ).slider({
+                    
+                //     change: function( event, ui ) {
+                //         $(".spinner4").hide();
+                //     }
+                // });
             /*----------------------------
             Search Popup / Hide Show Activation
             ------------------------------ */

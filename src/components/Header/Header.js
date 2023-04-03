@@ -13,7 +13,7 @@ export default function Header() {
   const isAuth = userInfo.isAuth
   const navigate = useNavigate();
   const auth = getAuth();
-  console.log(isAuth)
+
   const [isLogged, setIsLogged] = useState(isAuth);
 
   async function handleLogout(e) {
@@ -34,7 +34,7 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container-header">
         <div className="navbar-header">
-          <a className="navbar-brand" href="index.html"><img src="/assets/images/logo/logo.png" alt="logo img" /></a>
+          <Link className="navbar-brand" to="/home"><img src="/assets/images/logo/logo.png" alt="logo img" /></Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>

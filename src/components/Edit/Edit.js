@@ -43,7 +43,7 @@ const Edit = () => {
 
     
     const edit = async (data, e) => {
-        console.log(data)
+      
         const existingTitle = await titleExists(data.title);
         if(!existingTitle){
           return;

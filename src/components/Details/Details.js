@@ -38,6 +38,9 @@ const Details = () => {
 
   const routeParams = useParams();
   const id = routeParams.topicId;
+
+
+
   const userId = getId();
 
   const [topic, setTopic] = useState([]);
@@ -49,8 +52,12 @@ const Details = () => {
   useEffect(() => {
     async function getTheme() {
       const result = await getTopicById(id);
+      if(!result){
+        navigate("*");
+      }
       initialState = [result];
       setTopic(result);
+      
     }
 
     getTheme();
@@ -63,13 +70,12 @@ const Details = () => {
 
     async function getComments() {
       const result = await getCommentsSection(id);
-      console.log(result);
+      
       setCommentsTopic(result);
     }
     getComments();
   }, []);
 
-  console.log(commentsTopic);
 
   const post = async (data, e) => {
     try {

@@ -55,6 +55,7 @@ const Details = () => {
       if(!result){
         navigate("*");
       }
+      
       initialState = [result];
       setTopic(result);
       

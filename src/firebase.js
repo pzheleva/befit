@@ -4,7 +4,7 @@ import {getFirestore,query,getDocs,collection,where,addDoc} from "firebase/fires
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC3f5mrQ_tAQCUmRcDPT0a8Lccteed7Fy0",
+    apiKey: "",
     authDomain: "fit-life-62dc7.firebaseapp.com",
     projectId: "fit-life-62dc7",
     storageBucket: "fit-life-62dc7.appspot.com",
